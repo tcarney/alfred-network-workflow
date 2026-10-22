@@ -142,7 +142,7 @@
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string>Fetching wifi information ...</string>
+				<string>Fetching Wi-Fi information ...</string>
 				<key>script</key>
 				<string>. src/wifi.sh</string>
 				<key>scriptargtype</key>
@@ -150,7 +150,7 @@
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>Wi-Fi info</string>
+				<string>Wi-Fi Information</string>
 				<key>title</key>
 				<string>Wi-Fi</string>
 				<key>type</key>
@@ -241,7 +241,7 @@
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
-				<string>Ethernet Info</string>
+				<string>Ethernet Information</string>
 				<key>title</key>
 				<string>Ethernet</string>
 				<key>type</key>
@@ -318,7 +318,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>wifilist</string>
+				<string>aplist</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
