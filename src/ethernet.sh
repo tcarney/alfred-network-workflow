@@ -17,11 +17,10 @@ if [ "$(getEthernetState "$INTERFACE")" == 0 ]; then
 fi
 
 # Get network configuration
-NETINFO=$(networksetup -getinfo "$NAME")
+NETINFO=$(networksetup -getinfo "$SERVICE")
 NETCONFIG=$(getConnectionConfig "$NETINFO")
 
 MAC=$(getEthernetMac)
-NAME=$(getEthernetName)
 
 # Output IPv4
 IPv4=$(getIPv4 "$NETINFO")
@@ -36,11 +35,11 @@ if [ "$IPv6" != "" ]; then
 fi
 
 # Output DNS list
-DNSSTRING=$(getDNS "$(networksetup -getdnsservers "$NAME")")
+DNSSTRING=$(getDNS "$(networksetup -getdnsservers "$SERVICE")")
 if [ "$DNSSTRING" != "" ]; then
   addResult "" "$DNSSTRING" "$DNSSTRING" "DNS list" "$ICON_ETH"
 fi
 
-addResult "" "" "$NAME connected" "$INTERFACE ($MAC)" "$ICON_ETH"
+addResult "" "" "$SERVICE connected" "$INTERFACE ($MAC)" "$ICON_ETH"
 
 getXMLResults

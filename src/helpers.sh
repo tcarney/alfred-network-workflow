@@ -97,15 +97,25 @@ getEthernetMac() {
   echo "$DETAILS" | awk '/Ethernet Address: / {print substr($0, index($0, $3))}'
 }
 
-# Find name of primary connected network interface
+# Get network service name for an interface
+# $1 = Interface name (e.g. en0)
+# $2 = networksetup -listnetworkserviceorder (optional)
 # $! = String
-getPrimaryInterfaceName() {
+getServiceName() {
+  local ORDER=${2-$(networksetup -listnetworkserviceorder)}
+  echo "$ORDER" | awk -v dev="Device: $1)" '
+    /^\([0-9*]+\) / { sub(/^\([0-9*]+\) /, ""); name = $0 }
+    index($0, dev) { print name; exit }'
+}
+
+# Find service name of primary connected network interface
+# $! = String
+getPrimaryServiceName() {
   local INTERFACE=$(getEthernetInterface)
-  if [ $(getEthernetState "$INTERFACE") != 0 ]; then
-    echo "$(getEthernetName)"
-  else
-    echo "$(getWifiName)"
+  if [ $(getEthernetState "$INTERFACE") == 0 ]; then
+    INTERFACE=$(getWifiInterface)
   fi
+  getServiceName "$INTERFACE"
 }
 
 # Extract connection configuration
@@ -215,11 +225,7 @@ getVPNInfo() {
 # $1 = `networksetup -getdnsservers <servicename>`
 # $! = String
 getDNS() {
-  if [[ "$1" != *"any DNS"* ]]; then
-    echo $1 | sed 's/ / \/ /g'
-  else
-    echo ""
-  fi
+  echo "$1" | grep -E '^[0-9a-fA-F.:]+$' | paste -sd ' ' - | sed 's/ / \/ /g'
 }
 
 # Parse DNS info

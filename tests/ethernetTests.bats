@@ -38,3 +38,23 @@ load variables
   [ "$status" -eq 0 ]
   [ "$output" = "40:0c:8d:00:ef:8c" ]
 }
+
+@test "getServiceName: get renamed service" {
+  run getServiceName en5 "$ORDER"
+  [ "$output" = "Home Office Dock" ]
+}
+
+@test "getServiceName: get service" {
+  run getServiceName en0 "$ORDER"
+  [ "$output" = "Wi-Fi" ]
+}
+
+@test "getServiceName: get disabled service" {
+  run getServiceName en10 "$ORDER"
+  [ "$output" = "Old Adapter" ]
+}
+
+@test "getServiceName: match whole interface name" {
+  run getServiceName en1 "$ORDER"
+  [ "$output" = "" ]
+}

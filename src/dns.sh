@@ -9,7 +9,7 @@ if [ ! -f "$FILE" ]; then
   cp src/default-dns.conf "$FILE"
 fi
 
-NAME="$(getPrimaryInterfaceName)"
+SERVICE="$(getPrimaryServiceName)"
 
 # Handle action
 if [ "$1" != "" ]; then
@@ -22,12 +22,12 @@ if [ "$1" != "" ]; then
     DNS=$(echo "$1" | sed 's/ \/ / /g')
   fi
 
-  networksetup -setdnsservers "${NAME%,*}" $DNS
+  networksetup -setdnsservers "$SERVICE" $DNS
   dscacheutil -flushcache
   exit
 fi
 
-DNSSTRING=$(getDNS "$(networksetup -getdnsservers "$NAME")")
+DNSSTRING=$(getDNS "$(networksetup -getdnsservers "$SERVICE")")
 
 # Parse dns config file
 while read -r LINE; do

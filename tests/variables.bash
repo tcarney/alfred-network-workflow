@@ -78,3 +78,19 @@ INFO='<dictionary> {
 DNS="8.8.8.8
 8.8.4.4
 192.168.1.1"
+
+ORDER='An asterisk (*) denotes that a network service is disabled.
+(1) Home Office Dock
+(Hardware Port: USB 10/100/1000 LAN, Device: en5)
+
+(2) Thunderbolt Bridge
+(Hardware Port: Thunderbolt Bridge, Device: bridge0)
+
+(3) Wi-Fi
+(Hardware Port: Wi-Fi, Device: en0)
+
+(*) Old Adapter
+(Hardware Port: USB LAN, Device: en10)
+
+(4) Tailscale
+(Hardware Port: io.tailscale.ipn.macsys, Device: )'

@@ -24,7 +24,7 @@ if [ "$(getWifiState "$INTERFACE")" == 0 ]; then
 fi
 
 # Get network configuration
-NETINFO=$(networksetup -getinfo "$NAME")
+NETINFO=$(networksetup -getinfo "$SERVICE")
 NETCONFIG=$(getConnectionConfig "$NETINFO")
 
 # Output IPv4
@@ -58,7 +58,7 @@ elif [ "$SSID" != "" ]; then
 fi
 
 # Output DNS list
-DNSSTRING=$(getDNS "$(networksetup -getdnsservers "$NAME")")
+DNSSTRING=$(getDNS "$(networksetup -getdnsservers "$SERVICE")")
 if [ "$DNSSTRING" != "" ]; then
   addResult "" "$DNSSTRING" "$DNSSTRING" "DNS list" "$ICON_WIFI"
 fi

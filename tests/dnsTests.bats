@@ -8,6 +8,17 @@ load variables
   [ "$output" = "8.8.8.8 / 8.8.4.4 / 192.168.1.1" ]
 }
 
+@test "getDNS: ignore missing DNS servers" {
+  run getDNS "There aren't any DNS Servers set on Wi-Fi."
+  [ "$output" = "" ]
+}
+
+@test "getDNS: ignore networksetup errors" {
+  run getDNS "Home Office Dock is not a recognized network service.
+** Error: The parameters were not valid."
+  [ "$output" = "" ]
+}
+
 @test "parseDNSLine: parse a single dns config line" {
   run parseDNSLine "Google DNS:8.8.8.8,8.8.4.4"
   IFS='~' read -r -a ARRAY <<< "$output"
