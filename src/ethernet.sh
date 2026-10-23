@@ -35,13 +35,6 @@ if [ "$IPv6" != "" ]; then
   addResult "" "$IPv6" "$IPv6" "IPv6 address ($NETCONFIG)" "$ICON_ETH"
 fi
 
-# Output VPN
-SCUTIL=$(scutil --nc list)
-VPN=$(getVPN "$SCUTIL")
-if [ "$VPN" != "" ]; then
-  addResult "" "$VPN" "$VPN" "VPN connection" "$ICON_ETH"
-fi
-
 # Output DNS list
 DNSSTRING=$(getDNS "$(networksetup -getdnsservers "$NAME")")
 if [ "$DNSSTRING" != "" ]; then

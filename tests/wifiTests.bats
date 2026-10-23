@@ -105,26 +105,3 @@ load variables
   run getExternalIP 4 "http://non-existing.invalid"
   [ "$output" = "" ]
 }
-
-@test "getVPN: get connected VPN" {
-  run getVPN "$SCUTIL"
-  [ "$output" = "Test-VPN" ]
-}
-
-@test "getVPN: get connected VPN with other service type" {
-  INPUT='* (Connected)      DD1CCB2D-1578-45F1-9C63-6703A825D832 VPN (io.tailscale.ipn.macsys) "Tailscale"                      [VPN:io.tailscale.ipn.macsys]'
-  run getVPN "$INPUT"
-  [ "$output" = "Tailscale" ]
-}
-
-@test "getVPN: get connected VPN with spaces in name" {
-  INPUT='* (Connected)      65F5A799-4C98-4DA1-87D7-9D605D9D666C IPSec (com.vpn.vpn)              "Another VPN"                            [IPSec]'
-  run getVPN "$INPUT"
-  [ "$output" = "Another VPN" ]
-}
-
-@test "getVPN: ignore disconnected VPN" {
-  INPUT='* (Disconnected)   65F5A799-4C98-4DA1-87D7-9D605D9D666C IPSec (com.vpn.vpn)              "Another VPN"                            [IPSec]'
-  run getVPN "$INPUT"
-  [ "$output" = "" ]
-}

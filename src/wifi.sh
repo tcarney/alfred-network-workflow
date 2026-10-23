@@ -57,12 +57,6 @@ elif [ "$SSID" != "" ]; then
   addResult "" "$SSID" "$SSID_NAME" "$NAME access point ($AUTH)" "$ICON_WIFI"
 fi
 
-# Output VPN
-VPN=$(getVPN "$(scutil --nc list)")
-if [ "$VPN" != "" ]; then
-  addResult "" "$VPN" "$VPN" "VPN connection" "$ICON_WIFI"
-fi
-
 # Output DNS list
 DNSSTRING=$(getDNS "$(networksetup -getdnsservers "$NAME")")
 if [ "$DNSSTRING" != "" ]; then

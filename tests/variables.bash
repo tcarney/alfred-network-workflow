@@ -75,12 +75,6 @@ INFO='<dictionary> {
   Security : WPA2_PSK
 }'
 
-SCUTIL='Available network connection services in the current set (*=enabled):
-* (Disconnected)   9798DAED-21C7-44A1-B382-EFCE7E1373F1 PPP --> Modem (usbmodem1411) "Arduino Uno"                    [PPP:Modem]
-* (Disconnected)   CBA1BCD8-D18D-4241-9EF4-5656AF89F09B PPP --> Modem (usbserial) "USB-Serial Controller D"        [PPP:Modem]
-* (Disconnected)   F9BABC6E-649F-4113-95BC-94E1467FCBE8 PPP --> Modem (usbmodem1d112) "SAMSUNG_Android"                [PPP:Modem]
-* (Connected)   65F5A798-4B98-4DA1-87D8-9D605FFF6188 PPP --> L2TP       "Test-VPN"                      [PPP:L2TP]'
-
 DNS="8.8.8.8
 8.8.4.4
 192.168.1.1"

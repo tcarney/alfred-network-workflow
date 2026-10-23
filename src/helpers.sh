@@ -197,13 +197,6 @@ getExternalIP() {
   fi
 }
 
-# Get connected VPN
-# $1 = scutil --nc list
-# $! = String
-getVPN() {
-  echo "$1" | awk -F'"' '/\(Connected\)/ {print $2}'
-}
-
 # Get VPN info
 # $1 = `scutil --nc list` lines
 # $! = Separated string of VPN info
