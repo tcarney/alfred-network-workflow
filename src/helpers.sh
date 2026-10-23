@@ -139,10 +139,10 @@ getIPv6() {
 }
 
 # Extract SSID
-# $1 = airport -getinfo
+# $1 = ipconfig getsummary <interface>
 # $! = String
 getSSID() {
-  echo "$1" | awk '/ SSID/ {print substr($0, index($0, $2))}'
+  echo "$1" | awk '/^ *SSID : / {print substr($0, index($0, " : ") + 3)}'
 }
 
 # Pad BSSID
@@ -163,23 +163,23 @@ padBSSID() {
 }
 
 # Get BSSID
-# $1 = airport -getinfo
+# $1 = ipconfig getsummary <interface>
 # $! = String
 getBSSID() {
-  local BSSID=$(echo "$1" | awk '/ BSSID/ {print substr($0, index($0, $2))}' | xargs)
-  # Handle missing BSSID
-  if [ "$BSSID" == "BSSID:" ]; then
+  local BSSID=$(echo "$1" | awk '/^ *BSSID : / {print substr($0, index($0, " : ") + 3)}' | xargs)
+  # Handle missing or redacted BSSID
+  if [ "$BSSID" == "" ] || [ "$BSSID" == "<redacted>" ]; then
     echo ""
   else
     echo $(padBSSID "$BSSID")
   fi
 }
 
-# Extract wifi authentication
-# $1 = airport -getinfo
+# Extract wifi security type
+# $1 = ipconfig getsummary <interface>
 # $! = String
 getAuth() {
-  echo "$1" | awk '/ link auth/ {print substr($0, index($0, $2))}'
+  echo "$1" | awk '/^ *Security : / {print substr($0, index($0, " : ") + 3)}'
 }
 
 # Resolve global IP

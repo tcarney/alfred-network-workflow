@@ -40,7 +40,7 @@ if [ "$IPv6" != "" ]; then
 fi
 
 # Output WiFi AP info
-INFO=$($AIRPORT --getinfo)
+INFO=$(ipconfig getsummary "$INTERFACE")
 SSID=$(getSSID "$INFO")
 BSSID=$(getBSSID "$INFO")
 AUTH=$(getAuth "$INFO")
@@ -51,7 +51,9 @@ if [ "$BSSID" == "" ]; then
   SSID_NAME="$SSID"
 fi
 
-if [ "$SSID" != "" ]; then
+if [ "$SSID" == "<redacted>" ]; then
+  addResult "" "" "SSID hidden by macOS" "Run 'sudo ipconfig sethidewifiinfo 0' to show it" "$ICON_WIFI"
+elif [ "$SSID" != "" ]; then
   addResult "" "$SSID" "$SSID_NAME" "$NAME access point ($AUTH)" "$ICON_WIFI"
 fi
 

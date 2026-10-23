@@ -44,7 +44,7 @@ load variables
 
 @test "getSSID: get SSID" {
   run getSSID "$INFO"
-  [ "$output" = "Test-Network" ]
+  [ "$output" = "Test Network" ]
 }
 
 @test "getBSSID: get BSSID" {
@@ -52,19 +52,24 @@ load variables
   [ "$output" = "c8:07:19:2c:00:6f" ]
 }
 
-@test "getBSSID: no BSSID" {
-  run getBSSID "          BSSID:"
+@test "getBSSID: redacted BSSID" {
+  run getBSSID "  BSSID : <redacted>"
   [ "$output" = "" ]
 }
 
 @test "getBSSID: zero pads BSSID" {
-  run getBSSID "          BSSID: c8:7:19:2c:0:6f"
+  run getBSSID "  BSSID : c8:7:19:2c:0:6f"
   [ "$output" = "c8:07:19:2c:00:6f" ]
+}
+
+@test "getSSID: ignore missing SSID" {
+  run getSSID "  InterfaceType : WiFi"
+  [ "$output" = "" ]
 }
 
 @test "getAuth: get auth" {
   run getAuth "$INFO"
-  [ "$output" = "auth: wpa2-psk" ]
+  [ "$output" = "WPA2_PSK" ]
 }
 
 @test "getGlobalIP: get global IP" {

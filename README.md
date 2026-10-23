@@ -25,9 +25,11 @@ Or install directly from [Alfred Gallery](https://alfred.app/workflows/mrodalgaa
 
 Requires Alfred Powerpack to install this extension.
 
-This workflow might behave differently on macOS versions older than 10.7 Lion. This workflow is primarily implemented in Bash interacting with macOS network cli utils (like `networksetup`, `scutil` and `airport`) with a little help from AppleScript.
+This workflow might behave differently on macOS versions older than 10.7 Lion. This workflow is primarily implemented in Bash interacting with macOS network cli utils (like `networksetup`, `scutil`, and `ipconfig`) with a little help from AppleScript.
 
 Most functionality of this workflow will work without your user being administrator on your machine (see if your user is set as `Admin` or `Standard` in "System Settings.app" -> "Users & Groups"), but actions which changes network settings might fail if you are only a standard user.
+
+macOS hides the Wi-Fi SSID from command line tools by default. Run `sudo ipconfig sethidewifiinfo 0` once to show it in the `wifi` view.
 
 WIFI / Access Point changes requires your keychain password which is a known limitation [Read more](https://github.com/mrodalgaard/alfred-network-workflow/issues/11#issuecomment-559252188).
 
