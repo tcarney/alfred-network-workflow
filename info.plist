@@ -21,6 +21,19 @@
 				<false/>
 			</dict>
 		</array>
+		<key>29DF9922-6065-4832-86CC-AA8A8B69495D</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>E675530B-3605-4460-8074-3122E0461D9D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>306C666D-40A5-42F2-A4A0-776B168E7799</key>
 		<array/>
 		<key>328256C3-89CB-4454-91D1-8A35107A23EB</key>
@@ -51,6 +64,19 @@
 		</array>
 		<key>82D72C1A-0B33-483F-AA5E-E25B02CC7971</key>
 		<array/>
+		<key>947E5BBB-9D57-4F62-B936-DDD865D64F77</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>29DF9922-6065-4832-86CC-AA8A8B69495D</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>C416DACE-0F76-4BF9-A84C-D9B5497B1B00</key>
 		<array>
 			<dict>
@@ -267,6 +293,78 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>ip</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Fetching external IP addresses ...</string>
+				<key>script</key>
+				<string>. src/ip.sh</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string>External IP addresses</string>
+				<key>title</key>
+				<string>External IP</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>947E5BBB-9D57-4F62-B936-DDD865D64F77</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>. src/ip.sh "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>29DF9922-6065-4832-86CC-AA8A8B69495D</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
@@ -339,29 +437,6 @@
 		<dict>
 			<key>config</key>
 			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>. src/dns.sh "{query}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>82D72C1A-0B33-483F-AA5E-E25B02CC7971</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
 				<key>alfredfiltersresults</key>
 				<true/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -408,6 +483,29 @@
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>concurrently</key>
+				<false/>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>script</key>
+				<string>. src/dns.sh "{query}"</string>
+				<key>scriptargtype</key>
+				<integer>0</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>type</key>
+				<integer>0</integer>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.script</string>
+			<key>uid</key>
+			<string>82D72C1A-0B33-483F-AA5E-E25B02CC7971</string>
+			<key>version</key>
+			<integer>2</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>https://github.com/mrodalgaard/alfred-network-workflow</string>
@@ -419,6 +517,13 @@
 			<real>30</real>
 			<key>ypos</key>
 			<real>140</real>
+		</dict>
+		<key>29DF9922-6065-4832-86CC-AA8A8B69495D</key>
+		<dict>
+			<key>xpos</key>
+			<real>230</real>
+			<key>ypos</key>
+			<real>260</real>
 		</dict>
 		<key>306C666D-40A5-42F2-A4A0-776B168E7799</key>
 		<dict>
@@ -447,6 +552,13 @@
 			<real>230</real>
 			<key>ypos</key>
 			<real>500</real>
+		</dict>
+		<key>947E5BBB-9D57-4F62-B936-DDD865D64F77</key>
+		<dict>
+			<key>xpos</key>
+			<real>30</real>
+			<key>ypos</key>
+			<real>260</real>
 		</dict>
 		<key>C416DACE-0F76-4BF9-A84C-D9B5497B1B00</key>
 		<dict>
@@ -478,7 +590,29 @@
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
-	<array/>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>https://icanhazip.com</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>HTTP/HTTPS address of an external IP service</string>
+			<key>label</key>
+			<string>External IP Service</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>service</string>
+		</dict>
+	</array>
 	<key>version</key>
 	<string>1.7</string>
 	<key>webaddress</key>

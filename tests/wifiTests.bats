@@ -72,14 +72,38 @@ load variables
   [ "$output" = "WPA2_PSK" ]
 }
 
-@test "getGlobalIP: get global IP" {
-  run getGlobalIP
+@test "getExternalIP: get external IPv4" {
+  run getExternalIP 4
   [[ "$output" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]
 }
 
-@test "getGlobalIP: handle invalid resolver" {
-  run getGlobalIP "non-existing"
-  [[ "$output" = "" ]]
+@test "getExternalIP: read IPv4 from service" {
+  echo "203.0.113.7" > "$BATS_TEST_TMPDIR/ip"
+  run getExternalIP 4 "file://$BATS_TEST_TMPDIR/ip"
+  [ "$output" = "203.0.113.7" ]
+}
+
+@test "getExternalIP: read IPv6 from service" {
+  echo "2001:db8::1" > "$BATS_TEST_TMPDIR/ip"
+  run getExternalIP 6 "file://$BATS_TEST_TMPDIR/ip"
+  [ "$output" = "2001:db8::1" ]
+}
+
+@test "getExternalIP: ignore IPv4 when asking for IPv6" {
+  echo "203.0.113.7" > "$BATS_TEST_TMPDIR/ip"
+  run getExternalIP 6 "file://$BATS_TEST_TMPDIR/ip"
+  [ "$output" = "" ]
+}
+
+@test "getExternalIP: ignore non-IP response" {
+  echo "<html>error</html>" > "$BATS_TEST_TMPDIR/ip"
+  run getExternalIP 4 "file://$BATS_TEST_TMPDIR/ip"
+  [ "$output" = "" ]
+}
+
+@test "getExternalIP: handle invalid service" {
+  run getExternalIP 4 "http://non-existing.invalid"
+  [ "$output" = "" ]
 }
 
 @test "getVPN: get connected VPN" {

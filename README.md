@@ -14,6 +14,7 @@ Or install directly from [Alfred Gallery](https://alfred.app/workflows/mrodalgaa
 
 * Type `wifi` to show Wi-Fi info and enable/disable.
 * Type `eth` to show ethernet info (if connected).
+* Type `ip` to show external IPv4 and IPv6 addresses.
 * Type `vpn` to list configured VPNs and connect.
 * Type `dns` to list and change DNS settings for primary connection.
 
@@ -33,6 +34,8 @@ macOS hides the Wi-Fi SSID from command line tools by default. Run `sudo ipconfi
 
 WIFI / Access Point changes requires your keychain password which is a known limitation [Read more](https://github.com/mrodalgaard/alfred-network-workflow/issues/11#issuecomment-559252188).
 
+External IP addresses come from an HTTP service, [icanhazip.com](https://icanhazip.com) by default. Change it in the workflow configuration.
+
 ## Tests
 
 [bats](https://github.com/bats-core/bats-core) is used for automatic testing of Bash functionality. Install with `brew install bats-core` using [brew](http://brew.sh/).
@@ -40,6 +43,8 @@ WIFI / Access Point changes requires your keychain password which is a known lim
 Run tests: `bats tests`
 
 ## Credits
+
+The `ip` command is based on [alfred-ip-address-workflow](https://github.com/alexchantastic/alfred-ip-address-workflow) by Alex Chan.
 
 > Contributions, bug reports and feature requests are very welcome.
 

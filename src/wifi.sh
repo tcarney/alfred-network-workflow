@@ -57,12 +57,6 @@ elif [ "$SSID" != "" ]; then
   addResult "" "$SSID" "$SSID_NAME" "$NAME access point ($AUTH)" "$ICON_WIFI"
 fi
 
-# Output global IP
-GLOBALIP=$(getGlobalIP)
-if [ "$GLOBALIP" != "" ]; then
-  addResult "" "$GLOBALIP" "$GLOBALIP" "Global IP" "$ICON_WIFI"
-fi
-
 # Output VPN
 VPN=$(getVPN "$(scutil --nc list)")
 if [ "$VPN" != "" ]; then

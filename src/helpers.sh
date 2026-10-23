@@ -182,14 +182,17 @@ getAuth() {
   echo "$1" | awk '/^ *Security : / {print substr($0, index($0, " : ") + 3)}'
 }
 
-# Resolve global IP
-# $1 = Dig resolver address (optional)
+# Get external IP from an HTTP service
+# $1 = IP version (4 or 6)
+# $2 = Service URL (optional, defaults to $service or icanhazip)
 # $! = String
-getGlobalIP() {
-  local RESOLVER=${1:-"myip.opendns.com @resolver1.opendns.com"}
+getExternalIP() {
+  local URL=${2:-${service:-"https://icanhazip.com"}}
 
-  local IP=$(dig -4 +time=2 +tries=1 +short $RESOLVER)
-  if [[ "$IP" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
+  local IP=$(curl -"$1" -s -m 5 "$URL" | tr -d '[:space:]')
+  if [ "$1" == 4 ] && [[ "$IP" =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
+    echo "$IP"
+  elif [ "$1" == 6 ] && [[ "$IP" =~ ^[0-9a-fA-F:]+$ ]] && [[ "$IP" == *:* ]]; then
     echo "$IP"
   fi
 }

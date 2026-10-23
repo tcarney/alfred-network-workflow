@@ -35,12 +35,6 @@ if [ "$IPv6" != "" ]; then
   addResult "" "$IPv6" "$IPv6" "IPv6 address ($NETCONFIG)" "$ICON_ETH"
 fi
 
-# Output global IP
-GLOBALIP=$(getGlobalIP)
-if [ "$GLOBALIP" != "" ]; then
-  addResult "" "$GLOBALIP" "$GLOBALIP" "Global IP" "$ICON_ETH"
-fi
-
 # Output VPN
 SCUTIL=$(scutil --nc list)
 VPN=$(getVPN "$SCUTIL")
