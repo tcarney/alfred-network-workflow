@@ -32,8 +32,6 @@ Most functionality of this workflow will work without your user being administra
 
 macOS hides the Wi-Fi SSID from command line tools by default. Run `sudo ipconfig sethidewifiinfo 0` once to show it in the `wifi` view.
 
-WIFI / Access Point changes requires your keychain password which is a known limitation [Read more](https://github.com/mrodalgaard/alfred-network-workflow/issues/11#issuecomment-559252188).
-
 External IP addresses come from an HTTP service, [icanhazip.com](https://icanhazip.com) by default. Change it in the workflow configuration.
 
 ## Tests
