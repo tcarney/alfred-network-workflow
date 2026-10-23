@@ -35,16 +35,16 @@ while read -r LINE; do
   IFS='~' read -r -a ARRAY <<< "$DNSCONFIG"
 
   if [ "$ARRAY" != "" ]; then
-    addResult "" "${ARRAY[1]}" "${ARRAY[0]}" "${ARRAY[1]}" "${ARRAY[2]}"
+    addResult "dns-${ARRAY[1]}" "${ARRAY[1]}" "${ARRAY[0]}" "${ARRAY[1]}" "${ARRAY[2]}"
   fi
 done < "$FILE"
 
 addResult "" "EDIT" "Edit DNS List" "" "$ICON_DNS"
 
 if [ "$DNSSTRING" == "" ]; then
-  addResult "" "DEFAULT" "Default DNS (used)" "Default" "$ICON_DNS"
+  addResult "dns-default" "DEFAULT" "Default DNS (used)" "Default" "$ICON_DNS"
 else
-  addResult "" "DEFAULT" "Default DNS" "Default" "$ICON_DNS"
+  addResult "dns-default" "DEFAULT" "Default DNS" "Default" "$ICON_DNS"
 fi
 
 getXMLResults

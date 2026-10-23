@@ -14,7 +14,12 @@ RESULTS=()
 # $7 autocomplete
 ###############################################################################
 addResult() {
-  RESULT="<item uid='$(xmlEncode "$1")' arg='$(xmlEncode "$2")' valid='$6' autocomplete='$7'><title>$(xmlEncode "$3")</title><subtitle>$(xmlEncode "$4")</subtitle><icon>$(xmlEncode "$5")</icon></item>"
+  # Omit an empty uid so Alfred keeps the script order instead of learning it
+  local UID_ATTR=""
+  if [ "$1" != "" ]; then
+    UID_ATTR=" uid='$(xmlEncode "$1")'"
+  fi
+  RESULT="<item$UID_ATTR arg='$(xmlEncode "$2")' valid='$6' autocomplete='$7'><title>$(xmlEncode "$3")</title><subtitle>$(xmlEncode "$4")</subtitle><icon>$(xmlEncode "$5")</icon></item>"
   RESULTS+=("$RESULT")
 }
 
