@@ -198,7 +198,7 @@ getGlobalIP() {
 # $1 = scutil --nc list
 # $! = String
 getVPN() {
-  echo "$1" | awk '/\/*.(Connected)/ {print $7}' | tr -d '"'
+  echo "$1" | awk -F'"' '/\(Connected\)/ {print $2}'
 }
 
 # Get VPN info
