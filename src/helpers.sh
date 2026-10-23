@@ -212,13 +212,7 @@ getVPNInfo() {
     TYPE=${BASH_REMATCH[3]}
   fi
 
-  if [ "$STATE" == "Connected" ]; then
-    AP_ICON=$ICON_VPN_CONNECTED
-  else
-    AP_ICON=$ICON_VPN
-  fi
-
-  echo "$STATE"~"$NAME"~"$TYPE"~"$AP_ICON"
+  echo "$STATE"~"$NAME"~"$TYPE"~"$ICON_VPN"
 }
 
 # Get DNS info
@@ -247,7 +241,6 @@ parseDNSLine() {
   local ICON=$ICON_DNS
 
   if [ "$DNS" == "$2" ]; then
-    ICON=$ICON_DNS_USED
     ID="$ID (used)"
   fi
 

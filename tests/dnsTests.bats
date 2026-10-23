@@ -54,7 +54,7 @@ load variables
   IFS='~' read -r -a ARRAY <<< "$output"
   [ "${ARRAY[0]}" == "Google DNS (used)" ]
   [ "${ARRAY[1]}" == "8.8.8.8 / 8.8.4.4" ]
-  [ "${ARRAY[2]}" == "$ICON_DNS_USED" ]
+  [ "${ARRAY[2]}" == "$ICON_DNS" ]
 }
 
 @test "parseDNSLine: handle invalid line" {

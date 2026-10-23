@@ -26,7 +26,7 @@ load variables
   [ "${ARRAY[0]}" == "Connected" ]
   [ "${ARRAY[1]}" == "Another: VPN" ]
   [ "${ARRAY[2]}" == "IPSec" ]
-  [ "${ARRAY[3]}" == "$ICON_VPN_CONNECTED" ]
+  [ "${ARRAY[3]}" == "$ICON_VPN" ]
 }
 
 @test "getVPNInfo: get other service" {
@@ -52,5 +52,5 @@ load variables
   [ "${ARRAY[0]}" == "Connected" ]
   [ "${ARRAY[1]}" == "Another: VPN" ]
   [ "${ARRAY[2]}" == "IPSec" ]
-  [ "${ARRAY[3]}" == "$ICON_VPN_CONNECTED" ]
+  [ "${ARRAY[3]}" == "$ICON_VPN" ]
 }

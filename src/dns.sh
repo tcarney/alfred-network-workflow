@@ -42,7 +42,7 @@ done < "$FILE"
 addResult "" "EDIT" "Edit DNS List" "" "$ICON_DNS"
 
 if [ "$DNSSTRING" == "" ]; then
-  addResult "" "DEFAULT" "Default DNS (used)" "Default" "$ICON_DNS_USED"
+  addResult "" "DEFAULT" "Default DNS (used)" "Default" "$ICON_DNS"
 else
   addResult "" "DEFAULT" "Default DNS" "Default" "$ICON_DNS"
 fi

@@ -18,7 +18,7 @@ MAC=$(getWifiMac)
 
 # Handle Wi-Fi off state
 if [ "$(getWifiState "$INTERFACE")" == 0 ]; then
-  addResult "" "On" "Turn $NAME on" "$INTERFACE ($MAC)" "$ICON_WIFI_ERROR"
+  addResult "" "On" "Turn $NAME on" "$INTERFACE ($MAC)" "$ICON_WIFI"
   getXMLResults
   return
 fi
