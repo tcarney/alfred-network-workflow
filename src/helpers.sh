@@ -6,10 +6,6 @@
 ETHERNET_REGEX="LAN$|Lan$|Ethernet$|AX[0-9A-Z]+$"
 WIFI_REGEX="Airport$|Wi-Fi$"
 
-PRIORITY_HIGH="1"
-PRIORITY_MEDIUM="2"
-PRIORITY_LOW="5"
-
 # Trim string
 # $1 = Input string
 # $! = Trimmed string
@@ -256,82 +252,4 @@ parseDNSLine() {
   fi
 
   echo "$ID"~"$DNS"~"$ICON"
-}
-
-# Get saved access point
-# $1 = networksetup -listpreferredwirelessnetworks
-# $! = Separated string of saved access points
-getSavedAPs() {
-  while read -r line; do
-    OUTPUT=$OUTPUT~$line
-  done <<< "$1"
-  echo "${OUTPUT:1}"
-}
-
-# Check if list contains an element
-# $1 = List of elements
-# $2 = Element to check
-# $! = Boolean
-listContains() {
-  while read -r ITEM; do
-    if [ "$ITEM" == "$2" ]; then
-      echo 1
-    fi
-  done <<< "$1"
-}
-
-# Get WiFi strength
-# $1 = Wifi RSSI
-# $! = Wifi strength level 1-4
-getWifiStrength() {
-  if [ "$1" -lt -80 ]; then
-    echo 1
-  elif [ "$1" -lt -70 ]; then
-    echo 2
-  elif [ "$1" -lt -60 ]; then
-    echo 3
-  else
-    echo 4
-  fi
-}
-
-# Parse access point details string
-# $1 = `airpot --scan` line
-# $2 = BSSID or SSID of the active access point (optional)
-# $3 = List of favorite access points (optional)
-# $! = Separated string of access point settings
-getAPDetails() {
-  # Example:          SSID BSSID             RSSI CHANNEL HT CC SECURITY
-  # Example: "Test-Network 21:aa:4c:b4:cc:11 -24  6       Y  US WPA2(PSK/AES/AES)"
-  if [[ "$1" =~ [[:space:]]*(.*)[[:space:]]+([0-9a-f:]{17})?[[:space:]]+(-[0-9]{2})[[:space:]]+([,+0-9]+)[[:space:]]+([YN]{1})[[:space:]]+([-A-Z]{2})[[:space:]]+(.*) ]]
-  then
-    SSID=$(echo ${BASH_REMATCH[1]} | xargs)
-    BSSID=${BASH_REMATCH[2]}
-    RSSI=${BASH_REMATCH[3]}
-    CHANNEL=${BASH_REMATCH[4]}
-    HT=${BASH_REMATCH[5]}
-    CC=${BASH_REMATCH[6]}
-    SECURITY=$(echo ${BASH_REMATCH[7]} | xargs)
-  fi
-
-  FAVORITED=$(listContains "$3" "$SSID")
-  PRIORITY=$PRIORITY_LOW
-
-  if [ "$BSSID" != "" ] && [ "$BSSID" == "$2" ] || [ "$SSID" == "$2" ]; then
-    AP_ICON=$ICON_WIFI_ACTIVE_
-    PRIORITY=$PRIORITY_HIGH
-  elif [ "$FAVORITED" != "" ]; then
-    AP_ICON=$ICON_WIFI_STAR_
-    PRIORITY=$PRIORITY_MEDIUM
-  elif [[ "$SECURITY" =~ "NONE" ]]; then
-    AP_ICON=$ICON_WIFI_
-  else
-    AP_ICON=$ICON_WIFI_LOCK_
-  fi
-
-  AP_ICON=$AP_ICON$(getWifiStrength "$RSSI")$ICON_END
-
-  if [ "$SSID" != "" ]; then
-    echo "$PRIORITY"~"$SSID"~"$BSSID"~"$RSSI"~"$CHANNEL"~"$SECURITY"~"$AP_ICON"  
-  fi
 }

@@ -14,13 +14,11 @@ Or install directly from [Alfred Gallery](https://alfred.app/workflows/mrodalgaa
 
 * Type `wifi` to show Wi-Fi info and enable/disable.
 * Type `eth` to show ethernet info (if connected).
-* Type `wifilist` to scan for Wi-Fi hotspots.
 * Type `vpn` to list configured VPNs and connect.
 * Type `dns` to list and change DNS settings for primary connection.
 
 <p align="center">
 <img src="https://raw.githubusercontent.com/mrodalgaard/alfred-network-workflow/master/screenshots/wifi-preview.png" alt="alfred-wifi-workflow-wifi" width="600">
-<img src="https://raw.githubusercontent.com/mrodalgaard/alfred-network-workflow/master/screenshots/wifilist-preview.png" alt="alfred-wifi-workflow-wifilist" width="600">
 </p>
 
 ## Limitations

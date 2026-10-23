@@ -91,11 +91,3 @@ SCUTIL='Available network connection services in the current set (*=enabled):
 DNS="8.8.8.8
 8.8.4.4
 192.168.1.1"
-
-SAVED_APS="	Test-Network
-	Test-Network2
-	Martins iPhone"
-
-AP_LIST="foo
-  bar baz
-  qux"

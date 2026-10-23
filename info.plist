@@ -36,19 +36,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>4C74C452-E821-4F45-9B74-F0C28889BA4F</key>
-		<array>
-			<dict>
-				<key>destinationuid</key>
-				<string>C8DB69EA-BBA7-41E9-B60C-CF315A5F1CAD</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-		</array>
 		<key>709DCCB5-61D3-4693-8C39-F0A34FA8F6AD</key>
 		<array>
 			<dict>
@@ -77,8 +64,6 @@
 				<false/>
 			</dict>
 		</array>
-		<key>C8DB69EA-BBA7-41E9-B60C-CF315A5F1CAD</key>
-		<array/>
 		<key>D4820948-B40E-4B36-BD86-21E6BFDB7FF8</key>
 		<array>
 			<dict>
@@ -285,78 +270,6 @@
 				<key>concurrently</key>
 				<false/>
 				<key>escaping</key>
-				<integer>102</integer>
-				<key>script</key>
-				<string>. src/ap.sh "{query}"</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>C8DB69EA-BBA7-41E9-B60C-CF315A5F1CAD</string>
-			<key>version</key>
-			<integer>2</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>alfredfiltersresults</key>
-				<true/>
-				<key>alfredfiltersresultsmatchmode</key>
-				<integer>2</integer>
-				<key>argumenttreatemptyqueryasnil</key>
-				<false/>
-				<key>argumenttrimmode</key>
-				<integer>0</integer>
-				<key>argumenttype</key>
-				<integer>1</integer>
-				<key>escaping</key>
-				<integer>102</integer>
-				<key>keyword</key>
-				<string>aplist</string>
-				<key>queuedelaycustom</key>
-				<integer>3</integer>
-				<key>queuedelayimmediatelyinitially</key>
-				<true/>
-				<key>queuedelaymode</key>
-				<integer>0</integer>
-				<key>queuemode</key>
-				<integer>1</integer>
-				<key>runningsubtext</key>
-				<string>Scanning for access points ...</string>
-				<key>script</key>
-				<string>. src/ap.sh</string>
-				<key>scriptargtype</key>
-				<integer>0</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>subtext</key>
-				<string>List of Wi-Fi access points</string>
-				<key>title</key>
-				<string>Wi-Fi List</string>
-				<key>type</key>
-				<integer>0</integer>
-				<key>withspace</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.input.scriptfilter</string>
-			<key>uid</key>
-			<string>4C74C452-E821-4F45-9B74-F0C28889BA4F</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
 				<integer>68</integer>
 				<key>script</key>
 				<string>. src/vpn.sh "{query}"</string>
@@ -521,13 +434,6 @@
 			<key>ypos</key>
 			<real>20</real>
 		</dict>
-		<key>4C74C452-E821-4F45-9B74-F0C28889BA4F</key>
-		<dict>
-			<key>xpos</key>
-			<real>30</real>
-			<key>ypos</key>
-			<real>260</real>
-		</dict>
 		<key>709DCCB5-61D3-4693-8C39-F0A34FA8F6AD</key>
 		<dict>
 			<key>xpos</key>
@@ -548,13 +454,6 @@
 			<real>30</real>
 			<key>ypos</key>
 			<real>380</real>
-		</dict>
-		<key>C8DB69EA-BBA7-41E9-B60C-CF315A5F1CAD</key>
-		<dict>
-			<key>xpos</key>
-			<real>230</real>
-			<key>ypos</key>
-			<real>260</real>
 		</dict>
 		<key>D4820948-B40E-4B36-BD86-21E6BFDB7FF8</key>
 		<dict>
